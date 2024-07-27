@@ -4,8 +4,6 @@ import com.github.dehlynn.desafio.model.Role;
 
 import java.util.regex.Pattern;
 
-import static jdk.dynalink.linker.support.Guards.isNotNull;
-
 public class ClaimsUtils {
     public boolean nameAtendeRequisitos(String name) {
         boolean naoNullOuVazio = (name != null && !name.isEmpty());
