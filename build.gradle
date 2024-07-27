@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+
+}
+
+group = 'com.github.dehlynn'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext{
+	set('springDocVersion', '2.5.0')
+	set('JJwtVersion', '0.11.5')
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.3.2'
+	implementation 'org.json:json:20231013'
+	implementation 'org.slf4j:slf4j-api:2.0.0'
+	implementation 'ch.qos.logback:logback-classic:1.4.12'
+
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springDocVersion}"
+	implementation "io.jsonwebtoken:jjwt-api:${JJwtVersion}"
+
+	runtimeOnly "io.jsonwebtoken:jjwt-impl:${JJwtVersion}"
+	runtimeOnly "io.jsonwebtoken:jjwt-jackson:${JJwtVersion}"
+
+
+
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
