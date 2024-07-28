@@ -8,14 +8,12 @@ import java.util.Base64;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class JwtUtilsTest {
 
     private static final String JSON_CLAIMS_VALIDO = "{\"Name\":\"Um nome comum\",\"Seed\":\"3\",\"Role\":\"Admin\"}";
-    private static final String JSON_CLAIMS_REQUISITOS_INVALIDO = "{\"Name\":\"Um nome n40 Comum\",\"Seed\":\"400\",\"Role\":\"Invalido\"}";
     private static final String JSON_CLAIMS_INVALIDO = "{\"Here\": \"Hoje\",\"What\": \"Ever\"}";
     private static final String JSON_TRES_CLAIMS_FORA_PADRAO_DETERMINADO = "{\"Name\":\"Um nome comum\",\"Cod\":\"3\",\"Role\":\"Admin\"}";
     private static final String JSON_INVALIDO = "abcda";

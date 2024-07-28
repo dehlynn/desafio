@@ -38,12 +38,10 @@ public class TokenServiceImpl implements TokenService {
             return false;
         }
 
-
        if(!jwtUtils.possuiClaimsEsperadas(jsonClaims, NAME, SEED, ROLE)){
            LOGGER.info("Token possui quantidade de claims determinada, mas não são as esperadas");
            return false;
         }
-
 
         String name = jwtUtils.extrairClaim(jsonClaims, NAME);
         String seed = jwtUtils.extrairClaim(jsonClaims, SEED);
