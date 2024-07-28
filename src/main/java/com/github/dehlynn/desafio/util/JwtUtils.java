@@ -30,7 +30,15 @@ public class JwtUtils {
 
     public String extrairClaim(String jsonClaims, String claimProcurada) {
         return new JSONObject(jsonClaims).getString(claimProcurada);
+    }
 
-
+    public boolean possuiClaimsEsperadas(String jsonClaims, String... claimsProcuradas) {
+        JSONObject jsonObject = new JSONObject(jsonClaims);
+        for (String claim : claimsProcuradas) {
+            if (!jsonObject.has(claim)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -18,6 +18,10 @@ public class TokenServiceImpl implements TokenService {
     private final JwtUtils jwtUtils = new JwtUtils();
     private final ClaimsUtils claimsUtils = new ClaimsUtils();
 
+    private static final String NAME = "Name";
+    private static final String ROLE = "Role";
+    private static final String SEED = "Seed";
+
     @Override
     public Boolean validar(String token) {
 
@@ -34,9 +38,16 @@ public class TokenServiceImpl implements TokenService {
             return false;
         }
 
-        String name = jwtUtils.extrairClaim(jsonClaims, "Name");
-        String seed = jwtUtils.extrairClaim(jsonClaims, "Seed");
-        String role = jwtUtils.extrairClaim(jsonClaims, "Role");
+
+       if(!jwtUtils.possuiClaimsEsperadas(jsonClaims, NAME, SEED, ROLE)){
+           LOGGER.info("Token possui quantidade de claims determinada, mas não são as esperadas");
+           return false;
+        }
+
+
+        String name = jwtUtils.extrairClaim(jsonClaims, NAME);
+        String seed = jwtUtils.extrairClaim(jsonClaims, SEED);
+        String role = jwtUtils.extrairClaim(jsonClaims, ROLE);
 
         LOGGER.info("Informações do token - Name: {}, Seed: {}, Role: {}", name, seed, role);
 
