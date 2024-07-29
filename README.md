@@ -29,6 +29,7 @@ verificando se essas claims atendem aos requisitos especificados.
   │   └── JwtController.java
   ├── exception
   │   └── ErroHandler.java  
+  │   └── ErrorResponse.java  
   │   └── TokenInvalidoException.java    
   ├── service
   │   ├── TokenService.java
@@ -39,7 +40,7 @@ verificando se essas claims atendem aos requisitos especificados.
   │   └── JwtUtils.java
   └── DesafioApplication.java
  ```
-- 
+
 - *controller* 
 
   JwtController.java: Classe responsável por definir os endpoints da API. 
@@ -149,5 +150,5 @@ Contribuições são bem-vindas! Fique à vontade para abrir issues e pull reque
 
 ### Contato:
 
-Para mais informações, entre em contato com [Delaine] em [delainelynn@delaine].
+Para mais informações, entre em contato com [Delaine] em [delaine@delaine].
 
