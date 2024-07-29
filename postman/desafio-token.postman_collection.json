@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "c8258eb4-b17f-4818-a552-a973f869e3de",
+		"name": "desafio-token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13442717"
+	},
+	"item": [
+		{
+			"name": "jwt/validar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jwt/validar?token=eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJTZWVkIjoiMiIsIk5hbWUiOiJDYXJsYSBTaWx2YSJ9.4jJ6OHuaiPXLcYokWtDbN2Rry9zoeMOlcmDe78czDuE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jwt",
+						"validar"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJTZWVkIjoiMiIsIk5hbWUiOiJDYXJsYSBTaWx2YSJ9.4jJ6OHuaiPXLcYokWtDbN2Rry9zoeMOlcmDe78czDuE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

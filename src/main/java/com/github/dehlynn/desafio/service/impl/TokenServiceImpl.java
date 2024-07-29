@@ -1,5 +1,6 @@
 package com.github.dehlynn.desafio.service.impl;
 
+import com.github.dehlynn.desafio.exception.TokenInvalidoException;
 import com.github.dehlynn.desafio.service.TokenService;
 import com.github.dehlynn.desafio.util.ClaimsUtils;
 import com.github.dehlynn.desafio.util.JwtUtils;
@@ -24,6 +25,9 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Boolean validar(String token) {
+        if (token == null || token.isEmpty()) {
+            throw new TokenInvalidoException("O token JWT não pode ser nulo ou vazio.");
+        }
 
         String[] partesJwt = token.split("\\.");
         if (partesJwt.length != PARTES_JWT) {
@@ -38,9 +42,9 @@ public class TokenServiceImpl implements TokenService {
             return false;
         }
 
-       if(!jwtUtils.possuiClaimsEsperadas(jsonClaims, NAME, SEED, ROLE)){
-           LOGGER.info("Token possui quantidade de claims determinada, mas não são as esperadas");
-           return false;
+        if (!jwtUtils.possuiClaimsEsperadas(jsonClaims, NAME, SEED, ROLE)) {
+            LOGGER.info("Token possui quantidade de claims determinada, mas não são as esperadas");
+            return false;
         }
 
         String name = jwtUtils.extrairClaim(jsonClaims, NAME);

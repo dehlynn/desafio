@@ -26,7 +26,10 @@ verificando se essas claims atendem aos requisitos especificados.
 ```plaintext
   com.github.dehlynn.desafio
   ├── controller
-  │   └── Controller.java
+  │   └── JwtController.java
+  ├── exception
+  │   └── ErroHandler.java  
+  │   └── TokenInvalidoException.java    
   ├── service
   │   ├── TokenService.java
   │   └── impl
@@ -39,10 +42,13 @@ verificando se essas claims atendem aos requisitos especificados.
 - 
 - *controller* 
 
-  Controller.java: Classe responsável por definir os endpoints da API. 
+  JwtController.java: Classe responsável por definir os endpoints da API. 
 Atualmente, contém um endpoint /jwt/validar que recebe um token JWT como parâmetro e retorna se ele é válido ou não.
 Utiliza o serviço TokenService para a validação do token.
 
+- *exception*
+
+  Classes usadas para tratar exceção de token vazio ou nulo
 
 - *service*
 
@@ -121,7 +127,7 @@ Os testes estão no diretório
 ```plaintext
 src/test/java/com/github/dehlynn/desafio
 ├── controller
-│   └── ControllerTest.java
+│   └── JwtControllerTest.java
 ├── service
 │   ├── TokenServiceTest.java
 │   └── impl

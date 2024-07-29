@@ -1,5 +1,6 @@
 package com.github.dehlynn.desafio.service;
 
+import com.github.dehlynn.desafio.exception.TokenInvalidoException;
 import com.github.dehlynn.desafio.service.impl.TokenServiceImpl;
 import com.github.dehlynn.desafio.util.ClaimsUtils;
 import com.github.dehlynn.desafio.util.JwtUtils;
@@ -11,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -55,6 +57,19 @@ public class TokenServiceImplTest {
 
     }
 
+    @Test
+    void deveRetornarExceptionPoisJwtEstaNulo() {
+        assertThrows(TokenInvalidoException.class, () -> {
+            tokenService.validar(null);
+        });
+    }
+
+    @Test
+    void deveRetornarExceptionPoisJwtEstaVazio() {
+        assertThrows(TokenInvalidoException.class, () -> {
+            tokenService.validar("");
+        });
+    }
 
     @Test
     void deveRetornarFalsoParaJwtInvalido() {
@@ -82,6 +97,5 @@ public class TokenServiceImplTest {
         assertFalse(result);
 
     }
-
 
 }
